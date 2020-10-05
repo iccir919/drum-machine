@@ -1,24 +1,45 @@
+html {
+    font-size: 10px;
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
 #drum-machine {
+    margin: 4rem auto;
     text-align: center;
+    border-style: solid;
+}
+
+#display {
+    width: 50%;
+    background-color: gainsboro;
+    margin: 0 auto;
+    font-size: 2rem;
 }
 
 #drum-pads {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .drum-pad {
-    border-style: solid;
-    color: #fff;
-    background: #949494;
-    padding: 12px 24px;
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem auto;
+    font-size: 2.5rem;
+    width: 6rem;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    text-shadow: 0 0 .5rem black;
 }
 
-kbd {
-    font-size: 1.5rem;
-}
 
-.emoji-icon {
-    font-size: 2rem;
+@media (min-width: 768px) { 
+    #drum-machine {
+        max-width: 65%;
+    }    
 }
