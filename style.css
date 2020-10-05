@@ -1,0 +1,24 @@
+#drum-machine {
+    text-align: center;
+}
+
+#drum-pads {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drum-pad {
+    border-style: solid;
+    color: #fff;
+    background: #949494;
+    padding: 12px 24px;
+}
+
+kbd {
+    font-size: 1.5rem;
+}
+
+.emoji-icon {
+    font-size: 2rem;
+}
