@@ -60,20 +60,46 @@
 
         <script>
             function playSound(e) {
-                const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+                let keyCode;
+
+                // handle mouse clicks 
+                if (e.type === "click") {  
+                    e = Array.from(e.path).find(el => el.className === "drum-pad");
+                    keyCode = Number(e.getAttribute("data-key"));
+                // handle keyboard clicks
+                } else {
+                    keyCode = e.keyCode
+                }
+
+                const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
                 if (!audio) return;
                 audio.currentTime = 0;
                 audio.play();
             }
 
             function showEmoji(e) {
-                const emoji = document.querySelector(`div[data-key="${e.keyCode}`).getAttribute("data-emoji");
+                let keyCode;
+
+                    // handle mouse clicks 
+                if (e.type === "click") {  
+                    e = Array.from(e.path).find(el => el.className === "drum-pad");
+                    keyCode = Number(e.getAttribute("data-key"));
+                } else {
+                    // handle keyboard clicks
+                    keyCode = e.keyCode
+                }
+
+                const emoji = document.querySelector(`div[data-key="${keyCode}`).getAttribute("data-emoji");
                 const display = document.getElementById("current-sound-display");
                 display.innerText = emoji;
             }
 
             window.addEventListener('keydown', playSound);
             window.addEventListener('keydown', showEmoji);
+
+            const drumPads = Array.from(document.querySelectorAll('.drum-pad'));
+            drumPads.forEach((drumPad) => drumPad.addEventListener('click', playSound))
+            drumPads.forEach((drumPad) => drumPad.addEventListener('click', showEmoji))
 
 
         </script>
