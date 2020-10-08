@@ -1,5 +1,7 @@
 # Drum Machine
 
+## [Live version](https://iccir919.github.io/drum-machine/)
+
 ## Project Objectives by freeCodeCamp
 
 - [x] User Story #1: I should be able to see an outer container with a corresponding id="drum-machine" that contains all other elements.
