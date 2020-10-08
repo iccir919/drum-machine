@@ -4,38 +4,60 @@ html {
 
 body,html {
     margin: 0;
-    padding: 0;
     font-family: sans-serif;
 }
 
 #drum-machine {
+    max-width: 90%;
     margin: 4rem auto;
     text-align: center;
     border-style: solid;
 }
 
 #display {
-    width: 50%;
+    width: 75%;
     background-color: gainsboro;
     margin: 0 auto;
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 #drum-pads {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 }
 
 .drum-pad {
     cursor: pointer;
     border: .4rem solid black;
     border-radius: .5rem;
-    margin: 1rem auto;
-    font-size: 2.5rem;
-    width: 6rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+
+    transition: all 1s ease;
+    width: 10rem;
+    text-align: center;
     color: white;
     background: rgba(0,0,0,0.4);
     text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    font-size: 8rem;
+}
+
+kbd {
+    display: block;
+    font-size: 4rem;
+}
+  
+.directions {
+    font-size: 1.5rem;
+    margin-top: 3.5rem;
 }
 
 

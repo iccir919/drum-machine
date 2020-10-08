@@ -12,7 +12,7 @@
         <div id="drum-machine">
             <div id="display">
                 <h2 id="current-sound-display">
-                    Pick a letter!
+                    &nbsp;
                 </h2>
             </div>
             
@@ -56,51 +56,51 @@
                     <audio data-key="67" class="clip" id="C" src="sounds/tyrannosaurus.wav"></audio> 
                 </div>
             </div>
+
+            <div class="directions">
+                <h3>Directions:</h3> 
+                <p>
+                    1. Turn your sound on
+                    2. Choose (with keyboard or mouse) a letter
+                </p>
+            </div>
         </div>
 
         <script>
-            function playSound(e) {
+            function handleEvent(e) {
                 let keyCode;
 
-                // handle mouse clicks 
-                if (e.type === "click") {  
+                if (e.type === "click") {
                     e = Array.from(e.path).find(el => el.className === "drum-pad");
                     keyCode = Number(e.getAttribute("data-key"));
-                // handle keyboard clicks
                 } else {
-                    keyCode = e.keyCode
+                    keyCode = e.keyCode;
                 }
 
                 const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+                const drumPad = document.querySelector(`div[data-key="${keyCode}"]`);
                 if (!audio) return;
+
+                drumPad.classList.add('playing');
                 audio.currentTime = 0;
-                audio.play();
-            }
+                audio.play();          
 
-            function showEmoji(e) {
-                let keyCode;
-
-                    // handle mouse clicks 
-                if (e.type === "click") {  
-                    e = Array.from(e.path).find(el => el.className === "drum-pad");
-                    keyCode = Number(e.getAttribute("data-key"));
-                } else {
-                    // handle keyboard clicks
-                    keyCode = e.keyCode
-                }
-
-                const emoji = document.querySelector(`div[data-key="${keyCode}`).getAttribute("data-emoji");
                 const display = document.getElementById("current-sound-display");
-                display.innerText = emoji;
+                display.innerText = drumPad.getAttribute('data-emoji')    
             }
 
-            window.addEventListener('keydown', playSound);
-            window.addEventListener('keydown', showEmoji);
+            function removeTransition(e) {
+                if (e.propertyName !== 'transform') return;
+                e.target.classList.remove('playing');
+            }
+
+            window.addEventListener('keydown', handleEvent);
+            
 
             const drumPads = Array.from(document.querySelectorAll('.drum-pad'));
-            drumPads.forEach((drumPad) => drumPad.addEventListener('click', playSound))
-            drumPads.forEach((drumPad) => drumPad.addEventListener('click', showEmoji))
-
+            drumPads.forEach(drumPad => drumPad.addEventListener('transitionend', removeTransition));
+            drumPads.forEach(drumPad => drumPad.addEventListener('keydown', removeTransition));
+            drumPads.forEach(drumPad => drumPad.onclick = handleEvent);
 
         </script>
         <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
