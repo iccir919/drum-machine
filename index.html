@@ -88,14 +88,9 @@
     
             }
 
-            function removeTransition(e) {
-                if (e.propertyName !== 'transform') return;
-                e.target.classList.remove('playing');
-            }
-
             const drumPads = Array.from(document.querySelectorAll('.drum-pad'));
             drumPads.forEach(drumPad => drumPad.addEventListener('keydown', handleEvent));
-            drumPads.forEach(drumPad => drumPad.addEventListener('mousedown', handleEvent));
+            window.addEventListener('keydown', handleEvent);
 
         </script>
         <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
