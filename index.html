@@ -78,7 +78,7 @@
         <script>
             function handleEvent(e) {
                 let keyCode;
-                if (e.type === "mousedown") {
+                if (e.type === "click") {
                     e = Array.from(e.path).find(el => el.className === "drum-pad");
                     if (!e) return;
                     keyCode = Number(e.getAttribute("data-key"));
